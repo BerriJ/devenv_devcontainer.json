@@ -1,0 +1,7 @@
+# Ignore all files and folders
+/*
+
+# Except these
+!.gitignore
+!.devcontainer
+!README.md

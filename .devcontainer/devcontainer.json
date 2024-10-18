@@ -14,7 +14,7 @@
   // 
   "mounts": [
     // Mount local volume to store extensions between container runs
-    // "source=extensions_cache,target=/home/vscode/.vscode-server/extensions,type=volume",
+    "source=extensions_cache,target=/home/ubuntu/.vscode-server/extensions,type=volume",
     // And/or for VS Code Insiders
     // "source=extensions_cache_insiders,target=/home/vscode/.vscode-server-insiders/extensions,type=volume"
     // Mount git folder into /workspaces - vscode will also mount the current workspace there

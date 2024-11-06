@@ -3,22 +3,9 @@
   "image": "ghcr.io/berrij/devenv:latest",
   // Grant xhost access to root user in order to start x11 devices (r plots)
   "initializeCommand": "docker pull ghcr.io/berrij/devenv:latest",
-  // Those don't seem to be necessary any longer
-  // "runArgs": [
-  //     "--rm",
-  //     "--net",
-  //     "host",
-  //     "-e",
-  //     "DISPLAY=${env:DISPLAY}"
-  // ],
-  // 
   "mounts": [
     // Mount local volume to store extensions between container runs
     "source=extensions_cache,target=/home/ubuntu/.vscode-server/extensions,type=volume",
-    // And/or for VS Code Insiders
-    // "source=extensions_cache_insiders,target=/home/vscode/.vscode-server-insiders/extensions,type=volume"
-    // Mount git folder into /workspaces - vscode will also mount the current workspace there
-    // "source=${localEnv:HOME}/git,target=/workspaces,type=bind,consistency=cached",
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/sciebo,target=/home/ubuntu/sciebo,type=bind,consistency=cached",
   ],
   "customizations": {
@@ -38,7 +25,6 @@
         "rdebugger.r-debugger",
         // Latex
         "james-yu.latex-workshop",
-        "znck.grammarly",
         // Git
         "mhutchie.git-graph",
         "github.vscode-pull-request-github",
@@ -60,34 +46,47 @@
       "settings": {
         // C++
         "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-        "cmake.configureSettings": {
-          "CMAKE_TOOLCHAIN_FILE": "/usr/vcpkg/scripts/buildsystems/vcpkg.cmake"
+        "cmake": {
+          "configureSettings": {
+            "CMAKE_TOOLCHAIN_FILE": "/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake"
+          },
+          "configureArgs": [
+            "-DPYTHON_LIBRARY_DIR=/usr/local/lib/python3.12/dist-packages"
+          ]
         },
         // Python
+        "python": {
+          "pythonPath": "/home/ubuntu/python/venv/bin/python",
+          "defaultInterpreterPath": "/home/ubuntu/python/venv/bin/python",
+          "dataScience.interactiveWindowMode": "perFile",
+          "dataScience.sendSelectionToInteractiveWindow": true
+        },
         "jupyter.notebookFileRoot": "${workspaceFolder}",
-        "python.pythonPath": "/home/ubuntu/python/venv/bin/python",
-        "python.defaultInterpreterPath": "/home/ubuntu/python/venv/bin/python",
-        "python.dataScience.interactiveWindowMode": "perFile",
-        "python.dataScience.sendSelectionToInteractiveWindow": true,
         // R
-        "r.rterm.linux": "/home/ubuntu/python/venv/bin/radian",
-        "r.bracketedPaste": true,
-        "r.sessionWatcher": true,
-        "r.plot.useHttpgd": true,
-        "r.plot.defaults.fullWindowMode": true,
+        "r": {
+          "rterm.linux": "/home/ubuntu/python/venv/bin/radian",
+          "bracketedPaste": true,
+          "sessionWatcher": true,
+          "plot.useHttpgd": true,
+          "plot.defaults.fullWindowMode": true
+        },
         // Latex
-        "latex-workshop.latex.recipe.default": "latexmk (lualatex)",
-        "latex-workshop.latex.autoBuild.run": "onFileChange",
-        "latex-workshop.view.pdf.viewer": "tab",
-        "latex-workshop.linting.chktex.enabled": true,
-        "latex-workshop.linting.run": "onType",
-        "latex-workshop.synctex.afterBuild.enabled": true,
-        "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
-        "latex-workshop.intellisense.unimathsymbols.enabled": true,
+        "latex-workshop": {
+          "latex.recipe.default": "latexmk (lualatex)",
+          "latex.autoBuild.run": "onFileChange",
+          "linting.chktex.enabled": true,
+          "linting.run": "onType",
+          "synctex.afterBuild.enabled": true,
+          "view.pdf.viewer": "tab",
+          "view.pdf.internal.synctex.keybinding": "double-click",
+          "intellisense.unimathsymbols.enabled": true
+        },
         // Format code as you type
-        "editor.formatOnPaste": true,
-        "editor.formatOnType": true,
-        "editor.formatOnSave": true,
+        "editor": {
+          "formatOnPaste": true,
+          "formatOnType": true,
+          "formatOnSave": true,
+        },
         // Hide .gitignore files
         "explorer.excludeGitIgnore": true
       }

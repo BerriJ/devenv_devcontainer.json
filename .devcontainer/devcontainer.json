@@ -51,7 +51,7 @@
             "CMAKE_TOOLCHAIN_FILE": "/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake"
           },
           "configureArgs": [
-            "-DPYTHON_LIBRARY_DIR=/usr/local/lib/python3.12/dist-packages"
+            "-DPYTHON_LIBRARY_DIR=/home/ubuntu/python/venv/lib/python3.12/site-packages"
           ]
         },
         // Python
@@ -63,33 +63,31 @@
         },
         "jupyter.notebookFileRoot": "${workspaceFolder}",
         // R
-        "r": {
-          "rterm.linux": "/home/ubuntu/python/venv/bin/radian",
-          "bracketedPaste": true,
-          "sessionWatcher": true,
-          "plot.useHttpgd": true,
-          "plot.defaults.fullWindowMode": true
-        },
-        // Latex
-        "latex-workshop": {
-          "latex.recipe.default": "latexmk (lualatex)",
-          "latex.autoBuild.run": "onFileChange",
-          "linting.chktex.enabled": true,
-          "linting.run": "onType",
-          "synctex.afterBuild.enabled": true,
-          "view.pdf.viewer": "tab",
-          "view.pdf.internal.synctex.keybinding": "double-click",
-          "intellisense.unimathsymbols.enabled": true
-        },
-        // Format code as you type
-        "editor": {
-          "formatOnPaste": true,
-          "formatOnType": true,
-          "formatOnSave": true,
-        },
-        // Hide .gitignore files
-        "explorer.excludeGitIgnore": true
-      }
+        "r.rterm.linux": "/home/ubuntu/python/venv/bin/radian",
+        "r.plot.useHttpgd": true,
+        "r.bracketedPaste": true,
+        "r.sessionWatcher": true,
+        "r.plot.defaults.fullWindowMode": true
+      },
+      // Latex
+      "latex-workshop": {
+        "latex.recipe.default": "latexmk (lualatex)",
+        "latex.autoBuild.run": "onFileChange",
+        "linting.chktex.enabled": true,
+        "linting.run": "onType",
+        "synctex.afterBuild.enabled": true,
+        "view.pdf.viewer": "tab",
+        "view.pdf.internal.synctex.keybinding": "double-click",
+        "intellisense.unimathsymbols.enabled": true
+      },
+      // Format code as you type
+      "editor": {
+        "formatOnPaste": true,
+        "formatOnType": true,
+        "formatOnSave": true,
+      },
+      // Hide .gitignore files
+      "explorer.excludeGitIgnore": true
     }
   }
 }
